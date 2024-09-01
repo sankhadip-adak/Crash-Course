@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #nav-container {
+        background-color: aqua;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      #nav-container>button{
+        background-color: rgb(207, 80, 80);
+        color: white;
+      }
+      #container {
+        width: 100%;
+        display: flex;
+      }
+      #sidebar {
+        width: 30%;
+        background-color: rgb(39, 228, 121);
+        height: 100vh;
+      }
+      #contain {
+        width: 70%;
+        height: 100vh;
+        background: rgb(177, 120, 199);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const Navbar = () => {
+      return (
+        <div id="nav-container">
+          <button>Home</button>
+          <button>About</button>
+          <button>Contact</button>
+          <button>Details</button>
+        </div>
+      );
+    };
+    const Sidebar = () => {
+      return (
+        <div id="sidebar">
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+            <li>Details</li>
+          </ul>
+        </div>
+      );
+    };
+    const Content = (props) => {
+      return (
+        <div id="contain">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil
+            magnam consectetur voluptates ipsum nesciunt ex! Nostrum minima quos
+            laudantium laborum eaque asperiores atque. Iusto illo nihil alias
+            doloremque pariatur consectetur? Alias reiciendis accusamus iste
+            earum sint, similique dolorum harum corporis rem quaerat inventore
+            consectetur voluptate fugiat eligendi dicta iure officia cumque
+            debitis sit? Earum perferendis modi explicabo rem quam praesentium?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, vel
+            veritatis. Provident, totam magnam! Assumenda eos odit non tenetur
+            impedit, eum quidem quo amet ut deleniti perspiciatis reprehenderit
+            natus eligendi. Natus atque quam quasi aut quae sunt ex tempore
+            vero! Sapiente quisquam distinctio odio eius unde animi ut quia
+            maxime adipisci molestiae! Eos ad, impedit reiciendis quis ipsam
+            architecto magnam. Eaque ratione repudiandae praesentium eum
+            adipisci accusamus aut voluptate vel expedita nostrum inventore
+            rerum esse reiciendis pariatur tempora optio, ullam fuga laborum
+            illo ipsum. Corporis distinctio error nemo dicta aut? Dicta aliquid
+            dolorem blanditiis porro provident cum repudiandae quas quis, ab qui
+            magni sequi debitis corrupti ratione error velit! Dolore
+            accusantium, qui labore quis corrupti architecto enim dolorum
+            voluptatibus culpa. Veritatis, aspernatur accusantium enim neque
+            tempora obcaecati minima? Consectetur error totam voluptatum unde
+            odio, quas veniam culpa quibusdam, earum eius, praesentium
+            architecto perspiciatis. Voluptatum a quia et tenetur, pariatur
+            eligendi?
+          </p>
+          {props.item.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </div>
+      );
+    };
+    const App = () => {
+      let items = ["apple", "orange", "pineapple", "grapes"];
+      return (
+        <div>
+          <Navbar />
+          <div id="container">
+            <Sidebar />
+            <Content item={items} />
+          </div>
+        </div>
+      );
+    };
+    let root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>

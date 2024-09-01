@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greeting Component</title>
+    <style>
+      #counter-container {
+        text-align: center;
+        border: 2px solid black;
+        padding: 20px;
+        background-color: chartreuse;
+        margin-top: 50px;
+      }
+      #theme-container-dark {
+        margin-top: 50px;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid black;
+        background-color: midnightblue;
+        color: white;
+      }
+      #theme-container-light {
+        margin-top: 50px;
+        text-align: center;
+        padding: 20px;
+        border: 2px solid black;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const Counter = () => {
+      //   let count = 0;
+      const [count, setcount] = React.useState(0);
+      function handelDec() {
+        setcount(count - 1);
+        console.log(count);
+      }
+      function handelInc() {
+        setcount(count + 1);
+        console.log(count);
+      }
+
+      return (
+        <div id="counter-container">
+          <button
+            style={{ backgroundColor: "red", color: "white" }}
+            onClick={handelDec}> Decrement </button>
+          <h2>Count is {count}</h2>
+          <button
+            style={{ backgroundColor: "Green", color: "white" }}
+            onClick={handelInc}>Increment</button>
+        </div>
+      );
+    };
+
+    const Themes = () => {
+      // let theme = true;
+      let [theme, setTheme] = React.useState(true);
+      function handelClick() {
+        setTheme((init) => !init);
+      }
+      return (
+        <div id={theme ? "theme-container-dark" : "theme-container-light"}>
+          <button onClick={handelClick}>{theme ? "BLUE" : "PURPLE"}</button>
+          <div>
+            <h2>Hello World</h2>
+          </div>
+        </div>
+      );
+    };
+    const App = () => {
+      return (
+        <div>
+          <Counter />
+          <Themes />
+        </div>
+      );
+    };
+
+    const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    reactRoot.render(<App />);
+  </script>
+</html>
